@@ -1,3 +1,3 @@
 program hello
-  print *, 'Hello, world!' ! Comment
+    print *, 'Hello, world!' ! Comment
 end program hello
