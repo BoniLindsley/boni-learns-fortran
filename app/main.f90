@@ -24,6 +24,8 @@ program hello
   integer :: ten_numbers_to_sort(10) ! Same as (1:10)
   integer :: weights_on_swing(-5:5) ! 11 elements
   integer :: chess_grid(8, 8)
+  integer, allocatable :: origin(:)
+  integer, allocatable :: upper_triangular_matrix(:, :)
 
   ! "Static" variable. Persists between function calls.
   integer :: call_counter = 0
@@ -55,6 +57,14 @@ program hello
   chess_grid(3:6, :) = 0
   chess_grid(7, :) = [1, 1, 1, 1, 1, 1, 1, 1]
   chess_grid(8, :) = [5, 3, 3, 9, 40, 3, 3, 5]
+
+  allocate (origin(3))
+  allocate (upper_triangular_matrix(2, 2))
+  origin = [0, 0, 0]
+  upper_triangular_matrix(:, 1) = [1, 0]
+  upper_triangular_matrix(:, 2) = [2, 1]
+  deallocate (origin)
+  deallocate (upper_triangular_matrix)
 
   ! (File handle, format specifier)
   ! If asterisk, use STDIN/STDOUT and "auto convert"
