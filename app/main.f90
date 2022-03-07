@@ -6,7 +6,7 @@ program hello
 
   implicit none ! Require variable declaration before use.
 
-  ! Variable declarationx come before "body".
+  ! Variable declarations come before "body".
   integer :: counter
   real :: half
   real(sp) :: short_pi ! Explicit "kind" precision.
@@ -47,9 +47,16 @@ program hello
 
   eight_numbers_to_sort = [1, 6, 2, 3, 5, 8, 7, 4]
   ten_numbers_to_sort = [(counter*2, counter=1, 10)] ! [2, 4, ..., 20]
+
+  ! -5,-4,-3,-2,-1, 0, 1, 2, 3, 4, 5
+  ! [?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?]
   weights_on_swing(:) = 0
+  ! [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
   weights_on_swing(5) = 60
+  ! [0, 0, 0, 0, 0, 0, 0, 0, 0, 0,60]
   weights_on_swing(-2) = 30
+  ! [0, 0, 0,-2, 0, 0, 0, 0, 0, 0, 0]
+
   ! Not sure how to construct a 2D arrays directly.
   tic_tac_toe_grid(:, :) = 0
   chess_grid(1, :) = [5, 3, 3, 9, 40, 3, 3, 5]
