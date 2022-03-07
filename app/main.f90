@@ -27,6 +27,12 @@ program hello
   integer, allocatable :: origin(:)
   integer, allocatable :: upper_triangular_matrix(:, :)
 
+  ! Characters and strings.
+  character(len=5) :: full_name ! String.
+  character(13) :: greeting ! Same as `character(len=13)`.
+  character :: leaving(7) ! Not a string. Array of characters.
+  character(:), allocatable :: buffer
+
   ! "Static" variable. Persists between function calls.
   integer :: call_counter = 0
 
@@ -39,8 +45,7 @@ program hello
   short_e = 2.718281828_c_float
   long_e = 2.718281828_c_double
   two_dimensional = (100, 200)
-  a_letter = 'A'
-  a_letter = "B"
+  a_letter = 'A' ! Both single and double quotes are okay.
   no = .false.
   yes = .true.
   call_counter = call_counter + 1 - (1*3/3)**5
@@ -64,14 +69,21 @@ program hello
   chess_grid(3:6, :) = 0
   chess_grid(7, :) = [1, 1, 1, 1, 1, 1, 1, 1]
   chess_grid(8, :) = [5, 3, 3, 9, 40, 3, 3, 5]
+  full_name = 'World'
+  greeting = 'Hello, '//full_name//'!'
+  leaving = ['G', 'o', 'o', 'd', 'b', 'y', 'e']
 
   allocate (origin(3))
   allocate (upper_triangular_matrix(2, 2))
   origin = [0, 0, 0]
   upper_triangular_matrix(:, 1) = [1, 0]
   upper_triangular_matrix(:, 2) = [2, 1]
-  deallocate (origin)
   deallocate (upper_triangular_matrix)
+  !deallocate (origin) ! Implicit deallocates when out of scope.
+
+  !allocate (character(36) :: buffer) ! Implicit allocation for strings.
+  buffer = '1234567890'//'abcdefghijklmnopqrstuvwxyz'
+  !deallocate (buffer) ! Implicit deallocation when out of scope.
 
   ! (File handle, format specifier)
   ! If asterisk, use STDIN/STDOUT and "auto convert"
