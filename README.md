@@ -67,6 +67,15 @@ fpm test
 fpm run
 ```
 
+Alternatively use `Makefile` from this project
+if `make` is available but fpm is not.
+
+```sh
+make build
+make test
+make run
+```
+
 Learn Fortran from <https://fortran-lang.org/learn/quickstart>.
 Edit `app/main.f90` to follow tutorial.
 
