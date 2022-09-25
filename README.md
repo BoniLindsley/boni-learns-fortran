@@ -1,29 +1,71 @@
 # boni-learns-fortran
 
-Steps:
+A place to store my notes on learning Fortran.
 
-1.  Install Fortran.
-    Use system package manager. For example,
-    1.  Debian: `apt install --no-install-recommends gfortran`.
-        From <https://packages.debian.org/sid/gfortran>.
-    2.  Windows MSYS2: `pacman -S mingw-w64-x86_64-gcc-fortran`.
-        Make sure appropriate `bin` directory is in path.
-        From <https://packages.msys2.org/package/mingw-w64-x86_64-gcc-fortran?repo=mingw64>.
-2.  Install Fortran package manager
-    ([fpm](https://github.com/fortran-lang/fpm)).
-    Basic idea is to clone `https://github.com/fortran-lang/fpm.git`
-    and run `install.sh`.
-    The script uses `./build/bootstrap` to download and build fpm.
-    Default single binary output is `${HOME}/.local/bin/fpm`.
-3.  Create [first project](https://fpm.fortran-lang.org/en/tutorial/hello-fpm.html).
-    Basic idea:
-    ```sh
-    fpm new learn-fortran
-    cd learn-fortran
-    fpm build
-    fpm test
-    fpm run
-    ```
-    Edit project metadata in `fpm.toml`.
-4.  Learn Fortran from <https://fortran-lang.org/learn/quickstart>.
-    Edit `app/main.f90` to follow tutorial.
+## Install Fortran
+
+### Debian Package Manager
+
+GCC Fortran is available in the Debian official repository:
+<https://packages.debian.org/sid/gfortran>
+
+```sh
+apt install --no-install-recommends gfortran
+```
+
+### Windows MSYS2 Repository
+
+GCC Fortran is available in the MSYS2 official repository
+<https://packages.msys2.org/package/mingw-w64-x86_64-gcc-fortran?repo=mingw64>.
+
+```sh
+pacman -S mingw-w64-x86_64-gcc-fortran
+```
+
+Make sure appropriate `bin` directory is in `%PATH%`
+if using from outside a MSYS2 shell.
+
+## Install Fortran Package Manager
+
+The Fortran Package Manager ([fpm](https://github.com/fortran-lang/fpm))
+is the currently recommended way to build Fortran applications.
+
+### Windows MSYS2 Repository
+
+fpm is available in the MSYS2 official repository
+<https://packages.msys2.org/package/mingw-w64-x86_64-fpm?repo=mingw64>.
+
+```sh
+pacman -S mingw-w64-x86_64-fpm
+```
+
+### GitHub Source
+
+Basic idea is to clone the GitHub repository and run its install script.
+This requires GCC Fortran to already be installed.
+
+```sh
+git clone https://github.com/fortran-lang/fpm.git . #
+./install.sh
+# The script uses `./build/bootstrap` to download and build fpm.
+# It produces a single binary output.
+ls -l ${HOME}/.local/bin/fpm
+```
+
+## First Project
+
+This can be started from the fpm tutorial for a
+[first project](https://fpm.fortran-lang.org/en/tutorial/hello-fpm.html).
+This requires GCC Fortran and fpm to already be installed.
+
+```sh
+fpm new learn-fortran
+cd learn-fortran
+# Edit project metadata in `fpm.toml`.
+fpm build
+fpm test
+fpm run
+```
+
+Learn Fortran from <https://fortran-lang.org/learn/quickstart>.
+Edit `app/main.f90` to follow tutorial.
